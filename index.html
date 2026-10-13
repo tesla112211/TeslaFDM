@@ -560,6 +560,11 @@ html[data-view="agency"] .swin a[data-v="agency"],html[data-view="courses"] .swi
 .soonbar span{color:var(--mute);font-weight:300;font-size:.95rem}
 .soonbar .btn{padding:12px 24px;font-size:.95rem;white-space:nowrap}
 @media(max-width:700px){.soonbar{flex-direction:column;text-align:center}.soonbar .btn{width:100%;justify-content:center}}
+
+.gvid{max-width:720px;margin:30px auto 0}
+.gate .gl{width:150px}
+.gate .gcards{margin-top:34px}
+@media(max-width:900px){.gate .gl{width:120px}.gvid{margin-top:22px}}
 </style>
 <script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("mo")</script>
 <script>(function(){var s=location.hash,v="gate";if(s==="#courses"||s.indexOf("#c-")===0)v="courses";else if(s==="#careers"||s.indexOf("#j-")===0)v="careers";else if(s&&s!=="#home")v="agency";document.documentElement.dataset.view=v})()</script>
@@ -606,7 +611,8 @@ html[data-view="agency"] .swin a[data-v="agency"],html[data-view="courses"] .swi
   <div class="gwrap">
     <div class="gl" role="img" aria-label="Tesla FDM"></div>
     <h1>أهلاً بيك في Tesla FDM</h1>
-    <p>اختار الوجهة اللي تناسبك</p>
+    <p>شاهد الفيديو عشان تعرف الموقع، وبعدها اختار الوجهة اللي تناسبك</p>
+    <div class="gvid"><div class="vp" id="gVideo"></div></div>
     <div class="gcards">
       <a class="gc" href="#top"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5a2 2 0 012-2h2a2 2 0 012 2v2M3 13h18"/></svg></div><h3>شركة Tesla FDM</h3><span class="sub">للتسويق والترويج الإلكتروني</span><p>إعلانات ممولة، إدارة سوشيال ميديا، تصوير، وباقات تسويقية لأنشطتك.</p><span class="go">ادخل الشركة <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></span></a>
       <a class="gc" href="#courses"><div class="ic"><svg viewBox="0 0 24 24"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11.5V16c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/></svg></div><h3 style="direction:ltr;text-align:right">Tesla Courses</h3><span class="sub">كورسات تسويق رقمي مجانية</span><p>تعلّم التسويق الرقمي مجانًا من مدرب أكاديمي بخبرة 6 سنين.</p><span class="go">تصفح الكورسات <svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></span></a>
@@ -1046,7 +1052,7 @@ html[data-view="agency"] .swin a[data-v="agency"],html[data-view="courses"] .swi
       c.className = "card" + (w.ph ? " ph" : "");
       c.style.setProperty("--r", w.ratio || "1/1");
       const label = w.type === "ad" ? "حملة إعلانية" : "بوست";
-      if(w.ph){ c.innerHTML = bolt + "<span>مساحة لتصميمك</span>"; }
+      if(w.ph){ c.innerHTML = bolt + "<span>قريبًا سيتم العرض</span>"; }
       else { const i = document.createElement("img"); i.src = w.src; i.alt = w.title || label; i.loading = "lazy"; i.draggable = false; c.appendChild(i); }
       const t = document.createElement("div"); t.className = "tag"; t.textContent = label; c.appendChild(t);
       if(clone) c.setAttribute("aria-hidden","true");
@@ -1274,6 +1280,26 @@ html[data-view="agency"] .swin a[data-v="agency"],html[data-view="courses"] .swi
       document.getElementById("jRole").value = "سيلز الشركة";
       document.getElementById("j-apply").scrollIntoView();
     });
+  })();
+
+  /* ===== فيديو شرح الموقع في الواجهة الافتتاحية ===== */
+  const GATE_VIDEO = "https://youtu.be/rGv6BXTvqXU";
+  (function(){
+    const el = document.getElementById("gVideo"); if(!el) return;
+    const m = String(GATE_VIDEO).match(/(?:youtu\.be\/|v=|embed\/|shorts\/|live\/)([\w-]{11})/); const id = m ? m[1] : "";
+    const vert = /\/shorts\//.test(GATE_VIDEO);
+    if(!id){ el.remove(); return; }
+    el.classList.toggle("v", vert);
+    const img = document.createElement("img"); img.alt = "غلاف فيديو شرح الموقع"; img.loading = "lazy";
+    img.src = "https://i.ytimg.com/vi/" + id + "/maxresdefault.jpg";
+    img.onerror = () => { img.onerror = null; img.src = "https://i.ytimg.com/vi/" + id + "/hqdefault.jpg"; };
+    el.appendChild(img);
+    el.insertAdjacentHTML("beforeend", '<span class="vshade"></span><button type="button" class="vplay" aria-label="تشغيل فيديو شرح الموقع"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button><span class="vcap">شاهد شرح الموقع</span>');
+    el.querySelector(".vplay").addEventListener("click", () => {
+      el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" title="شرح الموقع" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+    });
+    // يوقف الفيديو لما الزائر يدخل أي اتجاه
+    addEventListener("hashchange", () => { if(document.documentElement.dataset.view !== "gate" && el.querySelector("iframe")){ el.innerHTML = ""; el.appendChild(img); el.insertAdjacentHTML("beforeend", '<span class="vshade"></span><button type="button" class="vplay" aria-label="تشغيل فيديو شرح الموقع"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg></button><span class="vcap">شاهد شرح الموقع</span>'); el.querySelector(".vplay").addEventListener("click", () => { el.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0&modestbranding=1" title="شرح الموقع" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }); } });
   })();
 </script>
 </body>
