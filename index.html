@@ -836,6 +836,117 @@ html[data-theme="dark"] :is(.gate,.hero) h1 em{filter:drop-shadow(0 0 22px rgba(
 #prog{background:linear-gradient(90deg,var(--cer-l),var(--rose));box-shadow:0 0 12px rgba(255,45,149,.6)}
 .gtag.on{background:linear-gradient(135deg,#ff2d95,#d10f72);border-color:transparent}
 
+/* =====================================================================
+   Mini Tesla: المساعد الجانبي (شخصية بيكسل)
+   ===================================================================== */
+.mt{position:fixed;right:20px;bottom:20px;z-index:56;display:flex;flex-direction:column;align-items:flex-start;gap:12px;direction:rtl}
+.mt-spr{display:block;width:100%;height:100%;image-rendering:pixelated}
+.mt-tile,.mt-lav,.mt-hav,.mt-mav,.mt-tav{flex:none;display:grid;place-items:end center;overflow:hidden;background:radial-gradient(circle at 18% 12%,rgba(255,45,149,.95),transparent 58%),radial-gradient(circle at 90% 105%,#007ba7,transparent 62%),#141418;box-shadow:inset 0 0 0 1px rgba(255,255,255,.12)}
+/* الزرار */
+.mt-launch{position:relative;display:flex;align-items:center;gap:12px;height:64px;padding:7px 7px 7px 22px;border-radius:999px;border:1.5px solid transparent;background:linear-gradient(#0d0d0f,#0d0d0f) padding-box,var(--duo) border-box;color:#fff;font:inherit;cursor:pointer;box-shadow:0 18px 40px -16px rgba(255,45,149,.6),0 12px 30px -18px rgba(0,123,167,.9);transition:transform .25s var(--ease),box-shadow .25s}
+.mt-launch:hover{transform:translateY(-3px);box-shadow:0 24px 46px -16px rgba(255,45,149,.7),0 14px 34px -16px rgba(0,123,167,.95)}
+.mt-lav{width:50px;height:50px;border-radius:50%}
+.mt-lav .mt-spr{width:48px;height:48px}
+.mt-lbl{display:grid;line-height:1.25;text-align:right}
+.mt-lbl b{font-size:1rem;font-weight:700;letter-spacing:.01em;direction:ltr;text-align:right}
+.mt-lbl small{font-size:.74rem;color:#9fdcf3;font-weight:500}
+.mt-badge{position:absolute;top:-3px;right:-3px;min-width:21px;height:21px;padding:0 5px;border-radius:999px;display:grid;place-items:center;background:var(--rose);color:#fff;font-size:.72rem;font-weight:700;border:2px solid #0d0d0f;box-shadow:0 0 14px rgba(255,45,149,.8)}
+.mt.seen .mt-badge{display:none}
+.mt-launch::before{content:"";position:absolute;inset:-2px;border-radius:inherit;pointer-events:none}
+.mt:not(.seen) .mt-launch::before{animation:mtping 2.4s ease-out infinite}
+@keyframes mtping{0%{box-shadow:0 0 0 0 rgba(255,45,149,.55)}80%,100%{box-shadow:0 0 0 16px rgba(255,45,149,0)}}
+.mt.open .mt-lbl small{color:#ff8fc6}
+/* الرسالة الترحيبية */
+.mt-teaser{position:relative;max-width:300px;animation:mtpop .45s var(--ease)}
+.mt-teaser[hidden]{display:none}
+.mt-tt{display:flex;align-items:center;gap:12px;padding:12px 16px 12px 14px;border-radius:20px 20px 6px 20px;border:1px solid var(--bd2);background:var(--solid);color:var(--ink);box-shadow:var(--shadow-lg);font:inherit;font-size:.86rem;line-height:1.6;text-align:right;cursor:pointer}
+.mt-tt b{display:block;color:var(--txt);font-size:.95rem;direction:ltr;text-align:right}
+.mt-tav{width:44px;height:44px;border-radius:13px 13px 13px 4px}
+.mt-tav .mt-spr{width:48px;height:48px;margin-bottom:-2px}
+.mt-tx{position:absolute;top:-9px;left:-9px;z-index:1;width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:#0a0a0a;color:#fff;font-size:1rem;line-height:1;cursor:pointer}
+.mt-tx:hover{background:var(--rose)}
+/* النافذة */
+.mt-panel{width:388px;max-width:calc(100vw - 40px);height:min(610px,calc(100vh - 130px));display:flex;flex-direction:column;border-radius:26px 26px 8px 26px;overflow:hidden;background:var(--solid);border:1px solid var(--bd2);box-shadow:0 40px 90px -30px rgba(0,0,0,.75),0 0 60px -20px rgba(255,45,149,.25);transform-origin:100% 100%;animation:mtin .38s var(--ease)}
+.mt-panel[hidden]{display:none}
+@keyframes mtin{from{opacity:0;transform:translateY(18px) scale(.95)}}
+@keyframes mtpop{from{opacity:0;transform:translateY(8px)}}
+.mt-hd{position:relative;display:flex;align-items:center;gap:12px;padding:14px 16px;color:#fff;background:radial-gradient(260px 140px at 100% 0,rgba(255,45,149,.48),transparent 70%),radial-gradient(260px 150px at 0 100%,rgba(0,123,167,.55),transparent 70%),#0a0a0a}
+.mt-hd::after{content:"";position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--duo)}
+.mt-hav{width:52px;height:52px;border-radius:16px 16px 16px 5px}
+.mt-hav .mt-spr{width:48px;height:48px}
+.mt-who{flex:1;min-width:0;display:grid;line-height:1.35}
+.mt-who b{font-size:1.08rem;direction:ltr;text-align:right}
+.mt-who small{display:flex;align-items:center;gap:7px;color:#b4b4bd;font-size:.76rem}
+.mt-who small i{width:8px;height:8px;border-radius:2px;background:#3ddc84;box-shadow:0 0 8px #3ddc84}
+.mt-ib{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.06);color:#fff;font-size:1.3rem;line-height:1;cursor:pointer;transition:background .2s,border-color .2s}
+.mt-ib svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mt-ib:hover{background:var(--rose);border-color:var(--rose)}
+.mt-log{flex:1;min-height:0;overflow-y:auto;overscroll-behavior:contain;display:flex;flex-direction:column;gap:8px;padding:18px 14px 10px;background-color:var(--bg2);background-image:radial-gradient(rgba(127,127,140,.16) 1px,transparent 1.2px);background-size:16px 16px;scrollbar-width:thin}
+.mt-m{display:flex;align-items:flex-end;gap:8px;max-width:90%;animation:mtpop .3s var(--ease)}
+.mt-m.bot{align-self:flex-start}
+.mt-m.me{align-self:flex-end}
+.mt-m.cont{padding-right:36px}
+.mt-mav{width:28px;height:28px;border-radius:9px 9px 9px 3px}
+.mt-mav .mt-spr{width:24px;height:24px}
+.mt-b{min-width:0;padding:10px 14px;border-radius:18px 6px 18px 18px;background:var(--solid);border:1px solid var(--bd);color:var(--ink);font-size:.9rem;line-height:1.75;box-shadow:0 8px 20px -16px rgba(0,0,0,.5)}
+html[data-theme="dark"] .mt-b{background:#18181b}
+.mt-m.cont .mt-b{border-radius:18px}
+.mt-b b{color:var(--txt);font-weight:700}
+.mt-m.me .mt-b{background:linear-gradient(135deg,#ff2d95,#d10f72);border-color:transparent;color:#fff;font-weight:600;border-radius:6px 18px 18px 18px;box-shadow:0 10px 22px -14px rgba(255,45,149,.8)}
+.typing .mt-b{display:flex;gap:5px;padding:14px 16px}
+.typing .mt-b i{width:7px;height:7px;border-radius:1px;background:var(--rose);animation:mtdot 1s infinite ease-in-out}
+.typing .mt-b i:nth-child(2){background:#a8349f;animation-delay:.15s}
+.typing .mt-b i:nth-child(3){background:var(--cer-l);animation-delay:.3s}
+@keyframes mtdot{0%,60%,100%{transform:translateY(0);opacity:.5}30%{transform:translateY(-5px);opacity:1}}
+.mt-b:has(.mt-pk){width:100%;min-width:250px}
+.mt-pk{display:grid;gap:7px}
+.mt-pk-r{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:2px 10px;padding:9px 11px;border-radius:12px 12px 12px 4px;border:1px solid var(--bd);background:var(--soft)}
+.mt-pk-r b{font-size:.92rem}
+.mt-pk-r span{color:var(--mut);font-size:.76rem}
+.mt-pk-r em{font-style:normal;color:var(--mut);font-size:.74rem;white-space:nowrap}
+.mt-pk-r strong{color:var(--txt);font-size:.98rem;font-variant-numeric:tabular-nums}
+.mt-pk-r i{grid-column:1/-1;font-style:normal;font-size:.7rem;font-weight:700;color:var(--hot)}
+.mt-pk-r.hot{border-color:rgba(255,45,149,.55);background:rgba(255,45,149,.08);box-shadow:0 0 0 1px rgba(255,45,149,.15)}
+.mt-opts{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px;max-height:44%;overflow-y:auto;border-top:1px solid var(--bd);background:var(--solid);scrollbar-width:thin}
+.mt-opts:empty{display:none}
+.mt-o{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:7px 14px 7px 15px;border-radius:999px;border:1px solid var(--bd2);background:var(--card);color:var(--txt);font:inherit;font-size:.84rem;font-weight:600;line-height:1.35;text-align:right;cursor:pointer;transition:border-color .2s,background .2s,transform .2s,color .2s}
+html[data-theme="dark"] .mt-o{background:rgba(255,255,255,.04)}
+.mt-o svg{flex:none;width:17px;height:17px;fill:none;stroke:var(--acc);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;transition:stroke .2s}
+.mt-o:hover,.mt-o:focus-visible{border-color:var(--rose);background:rgba(255,45,149,.09);transform:translateY(-1px)}
+.mt-o:hover svg,.mt-o:focus-visible svg{stroke:var(--hot)}
+.mt-o.hot{border-color:rgba(255,45,149,.55);background:rgba(255,45,149,.07)}
+.mt-o.hot svg{stroke:var(--hot)}
+.mt-o.home{border-style:dashed;background:transparent;color:var(--mut)}
+.mt-o.home svg{stroke:var(--mut)}
+.mt-opts.in .mt-o{animation:mtpop .32s var(--ease) calc(var(--i) * 45ms) backwards}
+.mt-ft{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:8px 16px 10px;border-top:1px solid var(--bd);background:var(--solid);color:var(--mut);font-size:.72rem}
+.mt-wa{display:inline-flex;align-items:center;gap:5px;color:#1fb85a;font-weight:700}
+html[data-theme="dark"] .mt-wa{color:#3ddc84}
+.mt-wa svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.mt-wa:hover{text-decoration:underline}
+/* حركة الشخصية */
+.mt-blink,.mt-talk{opacity:0}
+.mt-spr .mt-blink{animation:mtblink 4.6s steps(1) infinite}
+.mt-mav .mt-blink{animation-delay:1.4s}
+.mt-hav .mt-blink{animation-delay:.7s}
+@keyframes mtblink{0%,92%{opacity:0}93%,96%{opacity:1}97%,100%{opacity:0}}
+.mt.talking .mt-hav .mt-talk,.mt-m.typing .mt-talk{animation:mttalk .32s steps(1) infinite}
+@keyframes mttalk{50%{opacity:1}}
+.mt-rec{animation:mtrec 1.6s steps(1) infinite}
+@keyframes mtrec{50%{opacity:.1}}
+.mt-spr.idle .mt-body{animation:mtbob 1.8s steps(1) infinite}
+@keyframes mtbob{50%{transform:translateY(-1px)}}
+.mt-launch:hover .mt-spr .mt-body{animation-duration:.5s}
+@media (max-width:620px){
+  .mt{right:14px;bottom:14px}
+  .mt-launch{width:60px;height:60px;padding:4px;justify-content:center}
+  .mt-lav{width:50px;height:50px}
+  .mt-lbl{display:none}
+  .mt-panel{position:fixed;left:10px;right:10px;bottom:84px;width:auto;max-width:none;height:min(600px,calc(100dvh - 150px))}
+  .mt-teaser{max-width:calc(100vw - 110px)}
+  .mt-o{font-size:.82rem;min-height:36px;padding:6px 12px}
+}
+
 .door.soon:hover{transform:translateY(-6px);border-color:rgba(34,184,238,0.5)}
 
 /* =====================================================================
@@ -2335,6 +2446,312 @@ html[data-theme="dark"] :is(.gate,.hero) h1 em{filter:drop-shadow(0 0 22px rgba(
       if(location.hash !== "#j-apply") location.hash = "#j-apply";
       $("#j-apply").scrollIntoView();
     });
+  })();
+
+  /* =====================================================================
+     Mini Tesla: المساعد الجانبي (شخصية بيكسل مرسومة من صورة المؤسس)
+     بيوصل الزائر للي بيدور عليه بأسئلة وزراير. كل الكلام والاختيارات في N تحت.
+     ===================================================================== */
+  (function(){
+    /* ---------- الشخصية: شبكة 24×24 بيكسل ---------- */
+    const SPR = [
+      "........................",
+      "........KKKKKKK.........",
+      "......KKKKKKKKKKK.......",
+      ".....KKkkkKKKKKKKK......",
+      ".....KKkkKKKKKKrcKK.....",
+      ".....KKKKKKKKKKKKKKKKK..",
+      ".....HHssssssssssHH.....",
+      ".....HSEEESSSSEEESH.PPP.",
+      "....sHSSWESSSSWESSHsPpP.",
+      "....sSSSSSSssSSSSSSsPPP.",
+      ".....bSSSBBBBBBSSSb.SPP.",
+      ".....BSSSSBMMBSSSSB.SPP.",
+      ".....BBSSBBBBBBSSBB.SPP.",
+      "......BBBBBBBBBBBB.SSSP.",
+      ".........BBBBBB....SSS..",
+      "........JsSSSSsJ...JJJ..",
+      "......JJJJtTTtJJJJJJJ...",
+      ".....JJJjJTTTTJjJJJJ....",
+      "....JJgJJjTTTTjJJgJJ....",
+      "...JJJJJJjTTTTjJgJJJ....",
+      "...JjJgJJjTTTTjJJJJJ....",
+      "...JjJJJgjTTTTjJJJgJ....",
+      "...SjJJJJjTTTTjJJJJJ....",
+      "...SsjjjjjttttjjjjjJ...."
+    ];
+    const PAL = {K:"#17171b",k:"#30303a",r:"#ff2d95",c:"#22b8ee",H:"#16110f",S:"#c8916b",s:"#a9744f",E:"#141012",W:"#f3efe9",
+      B:"#1c1512",b:"#4a3529",M:"#8a4a40",T:"#f5f5f2",t:"#d6d6cf",J:"#ebe5d8",j:"#c3bcab",g:"#8c877d",P:"#0f0f13",p:"#5a5a66"};
+    const runs = rows => { let o = ""; rows.forEach((r, y) => { for(let x = 0; x < r.length;){ const ch = r[x]; if(ch === "."){ x++; continue; } let w = 1; while(r[x + w] === ch) w++; o += '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="1" fill="' + PAL[ch] + '"/>'; x += w; } }); return o; };
+    const BASE = runs(SPR);
+    const dot = (x, y, f) => '<rect x="' + x + '" y="' + y + '" width="1" height="1" fill="' + f + '"/>';
+    const BLINK = dot(8, 8, PAL.E) + dot(9, 8, PAL.E) + dot(14, 8, PAL.E) + dot(15, 8, PAL.E);
+    const TALK = dot(11, 11, "#2a0f0c") + dot(12, 11, "#2a0f0c") + dot(11, 12, PAL.M) + dot(12, 12, PAL.M);
+    const avatar = cls => '<svg class="mt-spr ' + (cls || "") + '" viewBox="0 0 24 24" shape-rendering="crispEdges" aria-hidden="true"><g class="mt-body">' + BASE +
+      '<g class="mt-blink">' + BLINK + '</g><g class="mt-talk">' + TALK + '</g><rect class="mt-rec" x="21" y="8" width="1" height="1" fill="#ff2d95"/></g></svg>';
+
+    /* ---------- أيقونات صغيرة للزراير ---------- */
+    const IC = {
+      rocket:'<path d="M5 15c-1.5 1.5-2 5-2 5s3.5-.5 5-2"/><path d="M9 15l-3-3c2-6 6-9 13-9 0 7-3 11-9 13z"/><circle cx="14.5" cy="9.5" r="1.6"/>',
+      gem:'<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 18M15 3l-3 18"/>',
+      play:'<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M10 9l5 3-5 3z"/>',
+      grad:'<path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/>',
+      brief:'<rect x="3" y="7" width="18" height="13" rx="2"/><path d="M9 7V5h6v2M3 12h18"/>',
+      bolt:'<path d="M13 2 4 14h7l-1 8 9-12h-7z"/>',
+      chat:'<path d="M4 5h16v11H9l-5 4z"/><path d="M8 10h8"/>',
+      ads:'<path d="M3 11v2a1 1 0 001 1h3l6 4V6L7 10H4a1 1 0 00-1 1z"/><path d="M17 9a4 4 0 010 6"/>',
+      social:'<rect x="3" y="4" width="18" height="16" rx="3"/><path d="M3 9h18M8 4v5"/>',
+      camera:'<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+      star:'<path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/>',
+      web:'<rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8M12 17v4"/>',
+      chart:'<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+      help:'<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 015 .5c0 2-2.5 2-2.5 4M12 17.5v.01"/>',
+      home:'<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/>',
+      back:'<path d="M15 5l-7 7 7 7"/>',
+      wa:'<path d="M4 20l1.3-4A8 8 0 1112 20a8 8 0 01-4-1z"/><path d="M9 9.5c.3 2.2 2.3 4.2 4.5 4.5"/>',
+      ig:'<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/>',
+      fb:'<path d="M14 8h3V4h-3a4 4 0 00-4 4v3H7v4h3v6h4v-6h3l1-4h-4V8z"/>',
+      mail:'<rect x="3" y="5" width="18" height="14" rx="3"/><path d="M4 7.5l8 6 8-6"/>',
+      form:'<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/>',
+      user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6"/>',
+      team:'<circle cx="9" cy="9" r="3.5"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5"/><path d="M15.5 5.6a3.5 3.5 0 010 6.8M18 14.8c2 .7 3.2 2.5 3.6 5.2"/>',
+      bell:'<path d="M6 16V11a6 6 0 0112 0v5l2 2H4z"/><path d="M10 21h4"/>',
+      list:'<path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/>',
+      reset:'<path d="M4 4v6h6"/><path d="M4.5 15a8 8 0 102-8.5L4 10"/>'
+    };
+    const ic = k => '<svg viewBox="0 0 24 24" aria-hidden="true">' + (IC[k] || IC.bolt) + '</svg>';
+
+    /* ---------- محتوى المحادثة ---------- */
+    const HOME = {t:"القايمة الرئيسية", i:"home", to:"start"};
+    const SV = {
+      ads:    {t:"إعلانات ميتا الممولة", i:"ads", d:"بنعمل إعلانات على فيسبوك وإنستجرام موجهة للجمهور المناسب لنشاطك، عشان تجيبلك رسايل وعملاء حقيقيين. وبتشوف الصرف والنتايج أول بأول."},
+      social: {t:"إدارة السوشيال ميديا", i:"social", d:"بنعملك خطة محتوى ونشر منتظم، عشان صفحتك تفضل شغالة ومتفاعلة طول الوقت."},
+      shoot:  {t:"تصوير فوتو وفيديو", i:"camera", d:"بنصور صور وريلز احترافية تبرز منتجك وأطباقك وتشد انتباه اللي بيقلّب."},
+      brand:  {t:"هوية بصرية وتصميم", i:"star", d:"لوجو وهوية بصرية وتصميمات تخلي نشاطك مميز ومعروف من أول نظرة."},
+      web:    {t:"مواقع ومنيوهات رقمية", i:"web", d:"موقع أو منيو رقمي سريع فيه خدماتك وأسعارك وأرقام التواصل، وممكن كمان يستقبل الطلبات على واتساب."},
+      reports:{t:"أنظمة متابعة وتقارير", i:"chart", d:"تقارير بالأرقام تعرف منها الشغل ماشي إزاي، وأنظمة بتتابع مبيعات مطعمك يوم بيوم."}
+    };
+    const PK = [
+      {n:"Bronze", p:"6,000", r:"5 ريلز", s:"10 بوستات"},
+      {n:"Gold", p:"8,500", r:"10 ريلز", s:"20 بوست", hot:true},
+      {n:"Diamond", p:"10,000", r:"15 ريلز", s:"30 بوست"}
+    ];
+    const pkCard = '<div class="mt-pk">' + PK.map(k => '<div class="mt-pk-r' + (k.hot ? ' hot' : '') + '"><b dir="ltr">' + k.n + '</b><span>' + k.r + ' · ' + k.s + '</span><em><strong>' + k.p + '</strong> جنيه</em>' + (k.hot ? '<i>الأكتر اشتراكًا</i>' : '') + '</div>').join("") + '</div>';
+    const jobsClosed = (typeof JOBS !== "undefined" ? JOBS : []).map(j => j.title).join("، ");
+
+    const N = {
+      start: () => ({
+        say: started ? ["تمام، نبدأ من الأول. بتدور على إيه؟"] : ["أهلاً بيك! 👋 أنا <b>Mini Tesla</b>، النسخة المصغرة من تسلا مؤسس Tesla FDM.", "قولي بتدور على إيه، وأنا أوصلك له في ثواني:"],
+        opts: [
+          {t:"عايز أسوّق لنشاطي", i:"rocket", to:"services"},
+          {t:"الباقات والأسعار", i:"gem", to:"packages"},
+          {t:"شغلنا السابق", i:"play", to:"works"},
+          {t:"الكورسات المجانية", i:"grad", to:"courses"},
+          {t:"عايز أشتغل معاكم", i:"brief", to:"careers"},
+          {t:"مين ورا Tesla FDM؟", i:"bolt", to:"about"},
+          {t:"أكلم حد من الفريق", i:"chat", to:"contact"}
+        ]
+      }),
+      services: () => ({
+        say: ["حلو جدًا! إحنا متخصصين في المطاعم والكافيهات، وكمان بنسوّق لأي نشاط تجاري.", "محتاج مساعدة في إيه بالظبط؟"],
+        opts: Object.keys(SV).map(k => ({t:SV[k].t, i:SV[k].i, to:"svc:" + k})).concat([{t:"مش متأكد، رشّحلي", i:"help", to:"unsure"}, HOME])
+      }),
+      svc: k => {
+        const s = SV[k], has = (WORKS[k] || []).length > 0;
+        return {
+          say: [s.d, has ? "تحب تشوف نماذج من شغلنا فيها؟" : "تحب تعرف الباقات أو تسأل فريقنا عنها؟"],
+          opts: (has ? [{t:"شوف شغلنا فيها", i:"play", svc:k, ok:"فتحتلك نماذج من شغلنا في " + s.t + " 👆"}] : [])
+            .concat([{t:"الباقات والأسعار", i:"gem", to:"packages"}, {t:"اسأل عنها على واتساب", i:"wa", wa:"أهلاً Tesla FDM، عايز أعرف أكتر عن خدمة " + s.t}, {t:"خدمة تانية", i:"back", to:"services"}, HOME])
+        };
+      },
+      unsure: () => ({
+        say: ["ولا يهمك 😉 كل باقاتنا شاملة كل خدمات التسويق، فمش محتاج تختار خدمة خدمة.", "اختار الباقة اللي تناسبك، أو سيب بياناتك وفريقنا يرشّحلك الأنسب لنشاطك."],
+        opts: [{t:"الباقات والأسعار", i:"gem", to:"packages"}, {t:"سيب بياناتك ونكلمك", i:"form", go:"#contact", ok:"ده فورم التواصل، املاه وهنرد عليك على واتساب."}, {t:"كلّم فريقنا واتساب", i:"wa", wa:"أهلاً Tesla FDM، محتاج ترشيح للباقة المناسبة لنشاطي"}, HOME]
+      }),
+      packages: () => ({
+        say: ["عندنا 3 باقات، وكلها شاملة: إعلانات ميتا، إدارة السوشيال ميديا، التصوير، الهوية البصرية، والتقارير.", pkCard, "تحب تحجز أنهي باقة؟"],
+        opts: PK.map(k => ({t:"احجز باقة " + k.n, i:k.hot ? "star" : "gem", pk:k.n, hot:k.hot})).concat([{t:"قارن بينهم بالتفصيل", i:"list", go:"#packages", ok:"دي الباقات بالتفصيل 👇"}, HOME])
+      }),
+      works: () => ({
+        say: ["عندنا نماذج حقيقية من شغلنا مع مطاعم وبراندات. تحب تشوف إيه؟"],
+        opts: [
+          {t:"نتايج الإعلانات الممولة", i:"ads", svc:"ads", ok:"دي نتايج حملاتنا، مترتبة من الأقوى 👆"},
+          {t:"فيديوهات وتصميمات", i:"camera", svc:"shoot", ok:"فتحتلك الفيديوهات والتصميمات 👆"},
+          {t:"مواقع ومنيوهات", i:"web", svc:"web", ok:"دي المواقع اللي عملناها، تقدر تفتح أي واحد منهم 👆"},
+          {t:"تقارير ومتابعة", i:"chart", svc:"reports", ok:"ده نموذج من لوحات المتابعة بتاعتنا 👆"},
+          HOME
+        ]
+      }),
+      courses: () => ({
+        say: ["<b>Tesla Courses</b> كورسات تسويق رقمي مجانية بالكامل، من غير اشتراكات ولا رسوم.", "بيقدمها تسلا، مدرب أكاديمي للتسويق في وزارة الشباب بخبرة 6 سنين. والكورسات قربت تنزل 🔥"],
+        opts: [
+          {t:"شوف الكورسات", i:"grad", go:"#c-catalog", ok:"دي الكورسات اللي جاية 👇"},
+          {t:"الفيديو التمهيدي", i:"play", go:"#c-intro", ok:"اتفرج على الفيديو التمهيدي الأول 👇"},
+          {t:"نبّهني أول ما تنزل", i:"bell", wa:"أنا عايز أعرف أول ما كورسات Tesla Courses تنزل"},
+          {t:"عايز كورس في موضوع معين", i:"chat", wa:"أهلاً Tesla Courses، عايز أطلب كورس في موضوع: "},
+          HOME
+        ]
+      }),
+      careers: () => ({
+        say: ["متاح دلوقتي وظيفة واحدة: <b>سيلز الشركة</b> 💼", "بتسوّق لخدمات وباقات Tesla FDM لأصحاب المطاعم والأنشطة التجارية، وتاخد عمولة على كل صفقة، والشغل كله تحت إشراف كامل من المؤسس."],
+        opts: [
+          {t:"اتفرج على شرح الوظيفة", i:"play", sales:true, ok:"فتحتلك شرح الوظيفة بالفيديو وكل التفاصيل 👆"},
+          {t:"قدّم دلوقتي", i:"form", go:"#j-apply", apply:true, ok:"ده فورم التقديم، املاه وهنراجع طلبك ونكلمك."},
+          {t:"باقي التخصصات", i:"list", to:"jobs"},
+          HOME
+        ]
+      }),
+      jobs: () => ({
+        say: ["التقديم مقفول حاليًا في: " + jobsClosed + ".", "أول ما يفتح تقديم جديد هنعلن عنه على صفحاتنا، فتابعنا."],
+        opts: [{t:"وظيفة السيلز", i:"brief", to:"careers"}, {t:"تابعنا على إنستجرام", i:"ig", url:SITE.instagram}, HOME]
+      }),
+      about: () => ({
+        say: ["<b>Tesla FDM</b> شركة تسويق وترويج إلكتروني، متخصصة في المطاعم وبتسوّق لأي نشاط تجاري.", "المؤسس والرئيس التنفيذي هو تسلا: خريج حاسبات وذكاء اصطناعي جامعة بنها، ومدرب أكاديمي للتسويق في وزارة الشباب بخبرة 6 سنين. وكل الشغل بيتم تحت إشرافه الكامل."],
+        opts: [{t:"اعرف أكتر عن المؤسس", i:"user", go:"#founder", ok:"ده تسلا، صاحب الفكرة 👇"}, {t:"قابل الفريق", i:"team", go:"#team", ok:"ده الفريق اللي بيشتغل على نجاح نشاطك 👇"}, {t:"ليه تختار Tesla FDM؟", i:"star", go:"#why", ok:"دي أسبابنا 👇"}, HOME]
+      }),
+      contact: () => ({
+        say: ["فريقنا موجود وبيرد بسرعة. اختار الطريقة اللي تريحك:"],
+        opts: [
+          {t:"واتساب", i:"wa", wa:"أهلاً Tesla FDM، عندي استفسار"},
+          {t:"إنستجرام", i:"ig", url:SITE.instagram},
+          {t:"فيسبوك", i:"fb", url:SITE.facebook},
+          {t:"إيميل", i:"mail", url:"mailto:" + SITE.email},
+          {t:"سيب بياناتك ونكلمك", i:"form", go:"#contact", ok:"ده فورم التواصل، املاه وهنرد عليك على واتساب."},
+          HOME
+        ]
+      })
+    };
+
+    /* ---------- الواجهة ---------- */
+    const wrap = document.createElement("div");
+    wrap.className = "mt"; wrap.id = "miniTesla";
+    wrap.innerHTML =
+      '<div class="mt-teaser" hidden><button type="button" class="mt-tx" aria-label="إخفاء الرسالة">&times;</button><button type="button" class="mt-tt"><span class="mt-tav">' + avatar() + '</span><span><b>Mini Tesla</b>أهلاً 👋 محتاج مساعدة تلاقي اللي بتدور عليه؟</span></button></div>' +
+      '<section class="mt-panel" id="mtPanel" role="dialog" aria-modal="false" aria-labelledby="mtName" hidden>' +
+        '<header class="mt-hd"><span class="mt-hav">' + avatar("idle") + '</span><div class="mt-who"><b id="mtName">Mini Tesla</b><small><i></i>مساعدك في موقع Tesla FDM</small></div>' +
+          '<button type="button" class="mt-ib mt-reset" aria-label="ابدأ المحادثة من الأول" title="ابدأ من الأول">' + ic("reset") + '</button>' +
+          '<button type="button" class="mt-ib mt-x" aria-label="إغلاق المساعد" title="إغلاق">&times;</button></header>' +
+        '<div class="mt-log" role="log" aria-live="polite" aria-relevant="additions"></div>' +
+        '<div class="mt-opts" role="group" aria-label="اختار من دول"></div>' +
+        '<footer class="mt-ft"><span>اختار من الزراير وأنا أوصلك</span><a class="mt-wa" target="_blank" rel="noopener">' + ic("wa") + 'كلّم فريقنا</a></footer>' +
+      '</section>' +
+      '<button type="button" class="mt-launch" aria-expanded="false" aria-controls="mtPanel" aria-label="افتح Mini Tesla، مساعد الموقع">' +
+        '<span class="mt-lav">' + avatar("idle") + '</span><span class="mt-lbl"><b>Mini Tesla</b><small>محتاج مساعدة؟</small></span><span class="mt-badge" aria-hidden="true">1</span></button>';
+    document.body.appendChild(wrap);
+
+    const panel = $(".mt-panel", wrap), log = $(".mt-log", wrap), optsEl = $(".mt-opts", wrap), launch = $(".mt-launch", wrap), teaser = $(".mt-teaser", wrap);
+    $(".mt-wa", wrap).href = waLink("أهلاً Tesla FDM، جاي من Mini Tesla وعندي استفسار");
+    let started = false, busy = false, token = 0;
+    const isMobile = () => matchMedia("(max-width:620px)").matches;
+    const wait = ms => new Promise(r => setTimeout(r, RM ? Math.min(ms, 120) : ms));
+    const scrollLog = () => { log.scrollTop = log.scrollHeight; };
+
+    function botMsg(html){
+      const last = log.lastElementChild, grouped = last && last.classList.contains("bot");
+      const m = document.createElement("div");
+      m.className = "mt-m bot" + (grouped ? " cont" : "");
+      m.innerHTML = (grouped ? "" : '<span class="mt-mav">' + avatar() + '</span>') + '<div class="mt-b">' + html + '</div>';
+      log.appendChild(m); scrollLog();
+    }
+    function userMsg(text){
+      const m = document.createElement("div"); m.className = "mt-m me";
+      m.innerHTML = '<div class="mt-b">' + esc(text) + '</div>';
+      log.appendChild(m); scrollLog();
+    }
+    async function typing(ms){
+      const t = document.createElement("div"); t.className = "mt-m bot typing" + (log.lastElementChild && log.lastElementChild.classList.contains("bot") ? " cont" : "");
+      t.innerHTML = (t.classList.contains("cont") ? "" : '<span class="mt-mav">' + avatar() + '</span>') + '<div class="mt-b"><i></i><i></i><i></i></div>';
+      log.appendChild(t); scrollLog(); wrap.classList.add("talking");
+      await wait(ms); t.remove(); wrap.classList.remove("talking");
+    }
+    async function say(lines, my){
+      for(const l of lines){
+        if(my !== token) return false;
+        await typing(Math.min(1100, 380 + l.replace(/<[^>]+>/g, "").length * 9));
+        if(my !== token) return false;
+        botMsg(l);
+      }
+      return true;
+    }
+    function renderOpts(list){
+      optsEl.innerHTML = "";
+      list.forEach((o, i) => {
+        const ext = o.wa || o.url;
+        const el = document.createElement(ext ? "a" : "button");
+        el.className = "mt-o" + (o.hot ? " hot" : "") + (o.to === "start" ? " home" : "");
+        if(ext){ el.href = o.wa ? waLink(o.wa) : o.url; if(!/^mailto:/.test(el.href)){ el.target = "_blank"; el.rel = "noopener"; } }
+        else el.type = "button";
+        el.innerHTML = ic(o.i) + "<span>" + esc(o.t) + "</span>";
+        el.style.setProperty("--i", i);
+        el.addEventListener("click", e => pick(o, e));
+        optsEl.appendChild(el);
+      });
+      optsEl.classList.remove("in"); void optsEl.offsetWidth; optsEl.classList.add("in");
+    }
+    async function goNode(id){
+      const my = ++token; busy = true; optsEl.innerHTML = "";
+      const [name, arg] = id.split(":");
+      const node = name === "svc" ? N.svc(arg) : N[name]();
+      const ok = await say(node.say, my);
+      if(!ok || my !== token) return;
+      started = true; busy = false;
+      renderOpts(node.opts);
+    }
+    function go(hash){
+      if(location.hash === hash){ const el = $(hash); if(el) el.scrollIntoView({behavior: RM ? "auto" : "smooth"}); }
+      else location.hash = hash;
+    }
+    async function pick(o, e){
+      if(busy && !o.wa && !o.url){ e.preventDefault(); return; }
+      userMsg(o.t); optsEl.innerHTML = "";
+      if(o.to) return goNode(o.to);
+      const my = ++token; busy = true;
+      if(o.pk){
+        const s = $('#leadForm select[name="need"]'); if(s) s.value = "باقة " + o.pk;
+        o.ok = "اختيار موفق 👌 جهزتلك فورم الحجز ومختار فيه باقة " + o.pk + ". املا اسمك واسم نشاطك وابعت، وهنكلمك على واتساب.";
+        o.after = [{t:"احجز على واتساب على طول", i:"wa", wa:"أهلاً Tesla FDM، عايز أحجز باقة " + o.pk}, {t:"باقة تانية", i:"gem", to:"packages"}, HOME];
+        go("#contact");
+      } else if(o.go){
+        if(o.apply){ const r = $("#jRole"); if(r) r.value = "سيلز الشركة"; }
+        go(o.go);
+      } else if(o.svc){
+        const card = $('.door[data-svc="' + o.svc + '"]'); if(card) card.click();
+      } else if(o.sales){
+        const b = $("[data-sales]"); if(b) b.click();
+      }
+      if((o.go || o.pk) && isMobile()) setTimeout(() => toggle(false, true), 350);
+      const okText = o.ok || (o.wa ? "فتحتلك واتساب في صفحة جديدة، ابعت الرسالة وفريقنا هيرد عليك 👍" : "فتحتلك الصفحة في تبويب جديد 👍");
+      const done = await say([okText], my);
+      if(!done || my !== token) return;
+      busy = false;
+      renderOpts(o.after || [{t:"محتاج حاجة تانية؟", i:"help", to:"start"}].concat(o.to === "start" ? [] : [{t:"أكلم حد من الفريق", i:"chat", to:"contact"}]));
+    }
+
+    /* ---------- فتح وقفل ---------- */
+    let seen = false;
+    try { seen = sessionStorage.getItem("mt-seen") === "1"; } catch(e){}
+    function toggle(open, quiet){
+      const isOpen = !panel.hidden;
+      if(open === undefined) open = !isOpen;
+      if(open === isOpen) return;
+      panel.hidden = !open; wrap.classList.toggle("open", open);
+      launch.setAttribute("aria-expanded", String(open));
+      teaser.hidden = true;
+      if(open){
+        wrap.classList.add("seen");
+        try { sessionStorage.setItem("mt-seen", "1"); } catch(e){}
+        if(!log.children.length) goNode("start");
+        setTimeout(() => { const f = $(".mt-o", optsEl) || $(".mt-x", panel); if(f && !isMobile()) f.focus({preventScroll:true}); }, 60);
+      } else if(!quiet) launch.focus({preventScroll:true});
+    }
+    launch.addEventListener("click", () => toggle());
+    $(".mt-x", panel).addEventListener("click", () => toggle(false));
+    $(".mt-reset", panel).addEventListener("click", () => { token++; log.innerHTML = ""; optsEl.innerHTML = ""; busy = false; started = true; goNode("start"); });
+    $(".mt-tt", teaser).addEventListener("click", () => toggle(true));
+    $(".mt-tx", teaser).addEventListener("click", () => { teaser.hidden = true; wrap.classList.add("seen"); try { sessionStorage.setItem("mt-seen", "1"); } catch(e){} });
+    addEventListener("keydown", e => { if(e.key === "Escape" && !panel.hidden && !document.querySelector("dialog[open]")) toggle(false); });
+    if(seen) wrap.classList.add("seen");
+    else setTimeout(() => { if(panel.hidden && !document.querySelector("dialog[open]")) teaser.hidden = false; }, 6500);
   })();
 })();
 </script>
